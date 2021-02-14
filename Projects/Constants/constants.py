@@ -75,84 +75,81 @@ quake_weapons = {
     }
 
 # Setup case prefixes
-quake_case_prefixes = {
-    "WOOD_HOE": "Slightly",
-    "STONE_HOE": "Mostly",
-    "SHINY_WOOD_HOE": "Spectacularly",
-    "SHINY_STONE_HOE": "Brilliant",
-    "IRON_HOE": "Excellently",
-    "GOLD_HOE": "Awesomely",
-    "DIAMOND_HOE": "Undeniably",
-    "SHINY_GOLD_HOE": "Luxury",
-    "SHINY_DIAMOND_HOE": "Lucky",
-    "SHINY_IRON_HOE": "Executive"
-    }
-
-# Setup laser prefixes
-quake_laser_prefixes = {
-    "YELLOW": "Shining",
-    "GREEN": "Glowing",
-    "WHITE": "Lofty",
-    "RED": "Radiant",
-    "BLUE": "Resplendant",
-    "PURPLE": "Majestic",
-    "PINK": "Stunning",
-    "GOLD": "Grandiose",
-    "EMERALD": "Dignified",
-    "DIAMOND": "Royal",
-    "GRAY": "Pearly",
-    "ORANGE": "Not-a-fruit",
-    "SILVER": "Lustrous",
-    "BLACK": "Absorbing"
-    }
-
-# Setup muzzle suffixes
-quake_muzzle_suffixes = {
-    "NONE": "AK",
-    "CLAY": "CL",
-    "WOOD": "WO",
-    "GOLD": "GD",
-    "REDSTONE": "RED",
-    "IRON": "IN",
-    "ENDER_STONE": "EST",
-    "DIAMOND": "DMD",
-    "QUARTZ": "QA",
-    "EMERALD": "EM",
-    "LAPIS": "LA",
-    "OBSIDIAN": "BBY",
-    "SPONGE": "HYPE",
-    "SEA_LANTERN": "SL",
-    "COMMAND_BLOCK": "CMD",
-    "PRISMARINE": "PRM",
-    "MELON": "MEL",
-    "PUMPKIN": "PMK",
-    "SOUL_SAND": "SMS"
-    }
-
-# Setup trigger suffixes
-quake_trigger_suffixes = {
-    "ONE_POINT_FIVE": "1.0",
-    "NINE_POINT_ZERO": "WTF",
-    "FIVE_POINT_ZERO": "5.0",
-    "TWO_POINT_FIVE": "2.5",
-    "ONE_POINT_FOUR": "2.0",
-    "ONE_POINT_THREE": "3.0",
-    "ONE_POINT_TWO": "1337",
-    "ONE_POINT_ONE": "2013",
-    "ONE_POINT_ZERO": "99",
-    "ZERO_POINT_NINE": "-1",
-    "ZERO_POINT_EIGHT_FIVE": "404"
-    }
-
-# Setup barrel suffixes
-quake_barrel_suffixes = {
-    "SMALL_BALL": "(S)",
-    "LARGE_BALL": "(L)",
-    "CREEPER": "(C)",
-    "BURST": "(B)",
-    "STAR": "(*)"
-    }
-
+quake_weapon_parts = {
+    "quake_case_prefixes" : {
+        "WOOD_HOE": "Slightly",
+        "STONE_HOE": "Mostly",
+        "SHINY_WOOD_HOE": "Spectacularly",
+        "SHINY_STONE_HOE": "Brilliant",
+        "IRON_HOE": "Excellently",
+        "GOLD_HOE": "Awesomely",
+        "DIAMOND_HOE": "Undeniably",
+        "SHINY_GOLD_HOE": "Luxury",
+        "SHINY_DIAMOND_HOE": "Lucky",
+        "SHINY_IRON_HOE": "Executive"
+    },
+    # Setup laser prefixes
+    "quake_laser_prefixes" : {
+        "YELLOW": "Shining",
+        "GREEN": "Glowing",
+        "WHITE": "Lofty",
+        "RED": "Radiant",
+        "BLUE": "Resplendant",
+        "PURPLE": "Majestic",
+        "PINK": "Stunning",
+        "GOLD": "Grandiose",
+        "EMERALD": "Dignified",
+        "DIAMOND": "Royal",
+        "GRAY": "Pearly",
+        "ORANGE": "Not-a-fruit",
+        "SILVER": "Lustrous",
+        "BLACK": "Absorbing"
+    },
+    # Setup muzzle suffixes
+    "quake_muzzle_suffixes" : {
+        "NONE": "AK",
+        "CLAY": "CL",
+        "WOOD": "WO",
+        "GOLD": "GD",
+        "REDSTONE": "RED",
+        "IRON": "IN",
+        "ENDER_STONE": "EST",
+        "DIAMOND": "DMD",
+        "QUARTZ": "QA",
+        "EMERALD": "EM",
+        "LAPIS": "LA",
+        "OBSIDIAN": "BBY",
+        "SPONGE": "HYPE",
+        "SEA_LANTERN": "SL",
+        "COMMAND_BLOCK": "CMD",
+        "PRISMARINE": "PRM",
+        "MELON": "MEL",
+        "PUMPKIN": "PMK",
+        "SOUL_SAND": "SMS"
+    },
+    # Setup trigger suffixes
+    "quake_trigger_suffixes" : {
+        "ONE_POINT_FIVE": "1.0",
+        "NINE_POINT_ZERO": "WTF",
+        "FIVE_POINT_ZERO": "5.0",
+        "TWO_POINT_FIVE": "2.5",
+        "ONE_POINT_FOUR": "2.0",
+        "ONE_POINT_THREE": "3.0",
+        "ONE_POINT_TWO": "1337",
+        "ONE_POINT_ONE": "2013",
+        "ONE_POINT_ZERO": "99",
+        "ZERO_POINT_NINE": "-1",
+        "ZERO_POINT_EIGHT_FIVE": "404"
+    },
+    # Setup barrel suffixes
+    "quake_barrel_suffixes" : {
+        "SMALL_BALL": "(S)",
+        "LARGE_BALL": "(L)",
+        "CREEPER": "(C)",
+        "BURST": "(B)",
+        "STAR": "(*)"
+        }
+}
 # Setup for armor
 quake_hats = (
     ("exodiahat", 200000, "None"), ("discohat", 75000, "None"), ("radianthat", 50000, "None"), ("bouncyhat", 25000, "None"),
@@ -211,7 +208,7 @@ bedwars_gamemodes = {"eight_one": "one", "eight_two": "two", "four_three": "thre
     }
 
 # Setup proper name conversions
-bedwars_stat_name_conversions = {"winstreak": "winstreak", "losses": "losses", "wins_bedwars": "wins", "games_played_bedwars": "games_played",
+bedwars_stat_name_conversions = {"winstreak": "winstreak", "losses": "losses_bedwars", "wins_bedwars": "wins", "games_played_bedwars": "games_played",
     "beds_lost_bedwars": "beds_lost", "beds_broken_bedwars": "beds_broken", "permanent _items_purchased_bedwars": "permament_items_purchased",
     "kills": {
         "kills": "total",

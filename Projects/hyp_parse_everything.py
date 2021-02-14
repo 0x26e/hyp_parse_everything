@@ -35,11 +35,7 @@ def getSmashHeroes(raw_stats, achievements):
 
     # Exp Booster stats
     sorted_stats["booster"]["active_exp_booster"] = raw_stats.get("expired_booster", False)
-    sorted_stats["booster"]["exp_booster_count"] = raw_stats.get("expBooster_purchases_10_plays", 0) * 10
-    sorted_stats["booster"]["exp_booster_count"] += raw_stats.get("expBooster_purchases_30_plays", 0) * 30
-    sorted_stats["booster"]["exp_booster_count"] += raw_stats.get("expBooster_purchases_50_plays", 0) * 50
-    sorted_stats["booster"]["exp_booster_count"] += raw_stats.get("expBooster_purchases_100_plays", 0) * 100
-
+    sorted_stats["booster"]["exp_booster_count"] = sum(map(lambda x: raw_stats.get(f"expBooster_purchases_{str(x)}_plays",0) * x,[10,30,50,100]))
     # For every proper stat in names
     for stat, stat_proper in smash_stat_name_conversions.items():
 
@@ -116,8 +112,6 @@ def getSmashHeroes(raw_stats, achievements):
     # Return cleaned up stats
     return sorted_stats
 
-
-# ! # Known bugs: Losses need to be fixed
 # ! # Add stats from achievements
 # Returns formatted Bedwars stats
 def getBedwars(raw_stats, achievements):
@@ -181,8 +175,6 @@ def getBedwars(raw_stats, achievements):
         for a_stat, a_stat_proper in bedwars_active_stats.items()
         }
 
-
-
     # Return cleaned up stats
     return sorted_stats
 
@@ -190,7 +182,6 @@ def getBedwars(raw_stats, achievements):
 # Returns formatted Quake stats
 # ! # Add shop stats
 def getQuake(raw_stats, achievements):
-
     # Setup container to hold stats
     sorted_stats = {}
 
@@ -231,56 +222,17 @@ def getQuake(raw_stats, achievements):
     sorted_stats["general"]["godlikes"] = achievements.get("quake_godlikes", 0)
     sorted_stats["general"]["weapons"] = achievements.get("quake_weapon_arsenal", 0)
 
-    # Resolve for best hat
-    best_quake_hat = raw_stats.get("hat", False)
-    if(not best_quake_hat):
-        for q_hat in quake_hats:
-            if(q_hat[0] in raw_stats["packages"]):
-                best_quake_hat = q_hat[0]
-                break
-
-    if(not best_quake_hat):
-        best_quake_hat = "NONE"
-
-    # Resolve for best chestplate
-    best_quake_chestplate = raw_stats.get("armor", False)
-    if(not best_quake_chestplate):
-        for q_chest in quake_chestplates:
-            if(q_chest[0] in raw_stats["packages"]):
-                best_quake_chestplate = q_chest[0]
-                break
-
-    if(not best_quake_chestplate):
-        best_quake_chestplate = "NONE"
-
-    # Resolve for best leggings
-    best_quake_leggings = raw_stats.get("leggings", False)
-    if(not best_quake_leggings):
-        for q_lower in quake_lowers:
-            if(f"{q_lower[0]}_leggings" in raw_stats["packages"]):
-                best_quake_leggings = f"{q_lower[0]}_leggings"
-                break
-
-    if(not best_quake_leggings):
-        best_quake_leggings = "NONE"
-
-    # Resolve for best boots
-    best_quake_boots = raw_stats.get("boots", False)
-    if(not best_quake_boots):
-        for q_lower in quake_lowers:
-            if(f"{q_lower[0]}_boots" in raw_stats["packages"]):
-                best_quake_boots = f"{q_lower[0]}_boots"
-                break
-
-    if(not best_quake_boots):
-        best_quake_boots = "NONE"
-
+    def computeBest(armor_part,armor_name):
+        try: return raw_stats.get(armor_name, False) or raw_stats["packages"][list(filter(lambda x:\
+             x in raw_stats["packages"],list(armor_part)))[0]]
+        except: return "NONE"
+    
     # Get best armor set
     sorted_stats["active"]["armor"] = {
-        "hat": best_quake_hat,
-        "chestplate": best_quake_chestplate,
-        "leggings": best_quake_leggings,
-        "boots": best_quake_boots,
+        "hat": computeBest(map(lambda x:x[0],quake_hats), "hat"),
+        "chestplate": computeBest(map(lambda x:x[0],quake_chestplates),"chestplate"),
+        "leggings": computeBest(map(lambda x:x[0]+"_leggings",quake_lowers),"leggings"),
+        "boots": computeBest(map(lambda x:x[0]+"_boots",quake_lowers),"boots"),
         }
 
     # Current weapon build
@@ -298,25 +250,19 @@ def getQuake(raw_stats, achievements):
             sorted_stats["active"]["weapon"] = q_weapon
 
     if("weapon" not in sorted_stats["active"]):
-        q_weapon_name = ""
-        q_weapon_name += quake_case_prefixes[sorted_stats["active"].get("case", "WOOD_HOE")] + " "
-        q_weapon_name += quake_laser_prefixes[sorted_stats["active"].get("laser", "YELLOW")] + " Railgun "
-        q_weapon_name += quake_muzzle_suffixes[sorted_stats["active"].get("muzzle", "NONE")]
-        q_weapon_name += quake_trigger_suffixes[sorted_stats["active"].get("trigger", "ONE_POINT_THREE")]
-        q_weapon_name += quake_barrel_suffixes[sorted_stats["active"].get("barrel", "SMALL_BALL")]
-        sorted_stats["active"]["weapon"] = q_weapon_name
-
-    # Add hats to cosmetic totals
-    for q_hat in quake_hats:
-        if(q_hat[0] in raw_stats["packages"]):
-            quake_total_items_purchased[q_hat[2]] += 1
-
-    # Total coins spent on chestplates
-    for q_hat in quake_hats:
-        if(q_hat[0] in raw_stats["packages"]):
-            quake_total_items_purchased[q_hat[2]] += 1
-
-    sorted_stats["items_purchased"] = quake_total_items_purchased
+        def getWeaponName(part_name,pre="suf"): return quake_weapon_parts[f"quake_{part_name}_{pre}fixes"][sorted_stats["active"].get(part_name, None)]
+        sorted_stats["active"]["weapon"] = f"{getWeaponName('case','pre') or 'WOOD_HOE'} {getWeaponName('laser','pre') or 'YELLOW'} Railgun "+\
+        f"{getWeaponName('muzzle') or 'NONE'} {getWeaponName('trigger') or 'ONE_POINT_THREE'} {getWeaponName('barrel') or 'SMALL_BALL'}"
+    
+    #Total Amount of items purchased armorwise
+    def amountOwned(armor_part):
+        return len(set(raw_stats["packages"]).intersection(set(list(armor_part)))) or 0
+    sorted_stats["items_purchased"] = sum([
+        amountOwned(map(lambda x:x[0],quake_hats)),
+        amountOwned(map(lambda x:x[0],quake_chestplates)),
+        amountOwned(map(lambda x:x[0]+'_leggings',quake_lowers)),
+        amountOwned(map(lambda x:x[0]+'_boots',quake_lowers))
+    ])
 
     # Return cleaned up stats
     return sorted_stats
@@ -370,6 +316,6 @@ def getAllStats(url):
 # List of gamemodes
 hypixel_stats_gamemodes = {
     "SuperSmash": ("smash_heroes", getSmashHeroes),
-    # "Bedwars": ("bedwars", getBedwars),
-    # "Quake": ("quake", getQuake),
+    "Bedwars": ("bedwars", getBedwars),
+    "Quake": ("quake", getQuake),
     }
