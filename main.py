@@ -37,7 +37,7 @@ URL = f"https://api.hypixel.net/player?key={API_KEY}&uuid={UUID}"
 
 reformed_stats = getAllStats(URL)
 
-pprint(reformed_stats)
+# pprint(reformed_stats)
 
 print("Total stats parsed: ", get_total_keys(reformed_stats))
 
