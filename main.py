@@ -1,8 +1,11 @@
 from Projects.hyp_parse_everything import *
 import json
-# Get API key from API_KEY.json
-API_FILE = open("API_KEY.json", "r")
-API_KEY = json.loads(API_FILE.read())["API_KEY"]
+import os
+# Get API key from API_KEY.json or environment
+API_KEY = os.environ.get('KEY')
+if not API_KEY:
+    API_FILE = open("API_KEY.json", "r")
+    API_KEY = json.loads(API_FILE.read())["API_KEY"]
 
 # Players for testing
 known_players = {
