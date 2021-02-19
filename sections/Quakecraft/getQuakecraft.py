@@ -1,7 +1,6 @@
 from .constants import *
 
 # Returns formatted Quake stats
-# ! # Add shop stats
 def getQuakecraft(raw_stats, achievements):
 
     # Setup container to hold stats
@@ -129,10 +128,27 @@ def getQuakecraft(raw_stats, achievements):
         if(q_hat[0] in raw_stats["packages"]):
             total_items_purchased[q_hat[2]] += 1
 
-    # Total coins spent on chestplates
+    # Add chestplates to cosmetic totals
     for q_chest in quake_chestplates:
         if(q_chest[0] in raw_stats["packages"]):
             total_items_purchased[q_chest[2]] += 1
+
+    # Add leggings and boots to cosmetic totals
+    for q_lower in quake_lowers:
+        if(f"{q_chest[0]}_leggings" in raw_stats["packages"]):
+            total_items_purchased[q_chest[2]] += 1
+        if(f"{q_chest[0]}_boots" in raw_stats["packages"]):
+            total_items_purchased[q_chest[2]] += 1
+
+    # Add killsounds to cosmetic totals
+    for q_ks, q_ks_type in quake_killsounds.items():
+        if(q_ks in raw_stats["packages"]):
+            total_items_purchased[q_ks_type] += 1
+
+    # Add quake parts to shop totals
+    for q_part, q_part_rank in quake_parts_ranks.items():
+        if(q_part in raw_stats["packages"]):
+            total_items_purchased[q_part_rank] += 1
 
     sorted_stats["items_purchased"] = total_items_purchased
 
