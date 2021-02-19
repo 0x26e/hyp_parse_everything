@@ -18,25 +18,25 @@ quake_mode_stats = ("kills", "deaths", "killstreaks", "wins", "headshots", "dist
 
 # List of cosmetic armor pieces
 quake_hats = (
-    ("exodiahat", 200000, "None"), ("discohat", 75000, "None"), ("radianthat", 50000, "None"), ("bouncyhat", 25000, "None"),
-    ("crafterhat", 15000, "None"), ("explosivehat", 5000, "None"), ("librarianhat", 2500, "None"), ("hypixelhat", 2000, "None"),
-    ("bobhat", 1500, "None"), ("ecologyhat", 1000, "None"), ("lighthat", 1000, "None"), ("engineeringhat", 1000, "None"),
-    ("richyrichhat", 1000, "None"), ("jeeperscreepershat", 900, "None"), ("walkingdeadhat", 900, "None"), ("controlfreakhat", 850, "None"),
-    ("cavemanhat", 850, "None"), ("hipsterhat", 850, "None"), ("majestichat", 700, "None"), ("tnt", 700, "None"), ("dispenser", 700, "None"),
-    ("diamond", 700, "None"), ("redstone", 700, "None"), ("lantern", 700, "None"), ("spaceman", 700, "None"), ("melon", 350, "None"),
+    ("exodiahat", 200000, "None"), ("discohat", 75000, "None"), ("radianthat", 50000, "MVP"), ("bouncyhat", 25000, "VIP+"),
+    ("crafterhat", 15000, "None"), ("explosivehat", 5000, "None"), ("librarianhat", 2500, "MVP"), ("hypixelhat", 2000, "MVP"),
+    ("bobhat", 1500, "MVP"), ("ecologyhat", 1000, "VIP"), ("lighthat", 1000, "VIP"), ("engineeringhat", 1000, "VIP+"),
+    ("richyrichhat", 1000, "VIP"), ("jeeperscreepershat", 900, "VIP+"), ("walkingdeadhat", 900, "VIP+"), ("controlfreakhat", 850, "VIP"),
+    ("cavemanhat", 850, "None"), ("hipsterhat", 850, "VIP"), ("majestichat", 700, "VIP+"), ("tnt", 700, "VIP+"), ("dispenser", 700, "VIP"),
+    ("diamond", 700, "VIP"), ("redstone", 700, "VIP"), ("lantern", 700, "None"), ("spaceman", 700, "None"), ("melon", 350, "None"),
     ("cactus", 350, "None"), ("showoff", 0, "None")
     )
 quake_chestplates = (
-    ("exodiakit", 200000, "None"), ("discokit", 75000, "None"), ("swegkit", 4500, "None"), ("budderkit", 3375, "None"), ("medievalkit", 2750, "None"),
-    ("fashionistakit", 2250, "None"), ("snowkit", 2250, "None"), ("slimekit", 2250, "None"), ("spacekit", 2250, "None"), ("revengekit", 2250, "None"),
-    ("invaderkit", 2250, "None"), ("specopskit", 2250, "None"), ("swatkit", 2250, "None"), ("marinekit", 2250, "None"), ("commander", 2250, "None"),
+    ("exodiakit", 200000, "None"), ("discokit", 75000, "None"), ("swegkit", 4500, "MVP+"), ("budderkit", 3375, "MVP"), ("medievalkit", 2750, "MVP"),
+    ("fashionistakit", 2250, "VIP+"), ("snowkit", 2250, "VIP+"), ("slimekit", 2250, "VIP+"), ("spacekit", 2250, "VIP+"), ("revengekit", 2250, "VIP"),
+    ("invaderkit", 2250, "VIP"), ("specopskit", 2250, "VIP"), ("swatkit", 2250, "None"), ("marinekit", 2250, "None"), ("commander", 2250, "None"),
     ("majestic", 2250, "None"), ("elite", 2250, "None"), ("soldier", 650, "None")
     )
 quake_lowers = (
-    ("exodia", 200000, "None"), ("disco", 75000, "None"), ("swegkit", 4500, "None"), ("budderkit", 3375, "None"), ("medievalkit", 2750, "None"),
-    ("fashionistakit", 2250, "None"), ("snowkit", 2250, "None"), ("slimekit", 2250, "None"), ("spacekit", 2250, "None"), ("revengekit", 2250, "None"),
-    ("invaderkit", 2250, "None"), ("specopskit", 2250, "None"), ("swatkit", 2250, "None"), ("marinekit", 2250, "None"), ("commander", 2250, "None"),
-    ("majestic", 2250, "None"), ("elite", 2250, "None"), ("soldier", 650, "None")
+    ("exodia", 200000, "None"), ("disco", 75000, "None"), ("swegkit", 4500, "MVP+"), ("budderkit", 3375, "MVP"), ("medievalkit", 2750, "MVP"),
+    ("fashionistakit", 2250, "VIP+"), ("snowkit", 2250, "VIP+"), ("slimekit", 2250, "VIP+"), ("spacekit", 2250, "VIP+"), ("revengekit", 2250, "VIP+"),
+    ("invaderkit", 2250, "VIP+"), ("specopskit", 2250, "VIP+"), ("swatkit", 2250, "VIP+"), ("marinekit", 2250, "VIP"), ("commander", 2250, "VIP"),
+    ("majestic", 2250, "VIP"), ("elite", 2250, "None"), ("soldier", 650, "None")
     )
 
 # List of premade weapons and their parts
@@ -141,4 +141,99 @@ quake_barrel_suffixes = {
     "CREEPER": "(C)",
     "BURST": "(B)",
     "STAR": "(*)"
+    }
+
+# List of killsounds
+quake_killsounds = {
+    "blaze_death": "None",
+    "horse_death": "None",
+    "bat_death": "None",
+    "enderman_death": "VIP",
+    "golem_death": "VIP",
+    "pig_death": "VIP",
+    "cow_hurt": "VIP",
+    "creeper_death": "VIP",
+    "anvil_land": "VIP",
+    "ghast_death": "VIP+",
+    "dragon_growl": "VIP+",
+    "villager_mhm": "MVP",
+    "wither_idle": "VIP+",
+    "level_up": "MVP",
+    "zombie_woodbreak": "MVP+"
+    }
+
+quake_parts_ranks = {
+    "trigger.five_point_zero": "None",
+	"trigger.nine_point_zero": "None",
+	"trigger.one_point_five": "None",
+	"trigger.one_point_four": "None",
+	"trigger.one_point_one": "None",
+	"trigger.one_point_three": "None",
+	"trigger.one_point_two": "None",
+	"trigger.one_point_zero": "None",
+	"trigger.two_point_five": "None",
+	"trigger.zero_point_eight_five": "None",
+	"trigger.zero_point_nine": "None",
+    "sight.black": "None",
+	"sight.blue": "None",
+	"sight.diamond": "None",
+	"sight.emerald": "VIP+",
+	"sight.gold": "None",
+	"sight.gray": "VIP+",
+	"sight.green": "None",
+	"sight.orange": "None",
+	"sight.pink": "VIP+",
+	"sight.purple": "None",
+	"sight.red": "None",
+	"sight.silver": "None",
+	"sight.white": "None",
+	"sight.yellow": "None",
+    "muzzle.clay": "None",
+	"muzzle.command_block": "VIP+",
+	"muzzle.diamond": "None",
+	"muzzle.emerald": "VIP+",
+	"muzzle.ender_stone": "VIP",
+	"muzzle.gold": "None",
+	"muzzle.iron": "None",
+	"muzzle.lapis": "None",
+	"muzzle.melon": "None",
+	"muzzle.none": "None",
+	"muzzle.obsidian": "None",
+	"muzzle.prismarine": "None",
+	"muzzle.pumpkin": "VIP+",
+	"muzzle.quartz": "None",
+	"muzzle.redstone": "None",
+	"muzzle.sea_lantern": "None",
+	"muzzle.soul_sand": "None",
+	"muzzle.sponge": "VIP+",
+	"muzzle.wood": "VIP",
+    "case.diamond_hoe": "None",
+	"case.gold_hoe": "None",
+	"case.iron_hoe": "None",
+	"case.shiny_diamond_hoe": "None",
+	"case.shiny_gold_hoe": "None",
+	"case.shiny_iron_hoe": "None",
+	"case.shiny_stone_hoe": "None",
+	"case.shiny_wood_hoe": "None",
+	"case.stone_hoe": "None",
+	"case.wood_hoe": "None",
+    "beam.bookworm": "None",
+	"beam.bubbles": "None",
+	"beam.cloud": "None",
+	"beam.critical_hit": "None",
+	"beam.firework": "None",
+	"beam.flames": "None",
+	"beam.green_stars": "None",
+	"beam.hearts": "None",
+	"beam.notes": "None",
+	"beam.power": "None",
+	"beam.purple_stars": "None",
+	"beam.rainbow": "None",
+	"beam.smoke": "None",
+	"beam.thunderclouds": "None",
+    "barrel.burst": "None",
+	"barrel.creeper": "None",
+	"barrel.large_ball": "None",
+	"barrel.small_ball": "None",
+	"barrel.star": "None"
     }
