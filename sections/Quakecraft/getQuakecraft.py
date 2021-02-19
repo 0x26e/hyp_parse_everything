@@ -152,5 +152,8 @@ def getQuakecraft(raw_stats, achievements):
 
     sorted_stats["items_purchased"] = total_items_purchased
 
+    # Get packages length
+    sorted_stats["general"]["length_packages"] = len(raw_stats["packages"])
+
     # Return cleaned up stats
     return sorted_stats
